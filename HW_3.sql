@@ -12,36 +12,36 @@ FROM employees
 INNER join employee_salary ON employee_salary.employee_id=employees.id
 INNER join salary ON employee_salary.salary_id=salary.id
 WHERE monthly_salary<2000
-order by employees.employee_name;
+ORDER BY employees.employee_name;
 
 --3. Вывести все зарплатные позиции, но работник по ним не назначен. 
 --(ЗП есть, но не понятно кто её получает.)
 
 SELECT employees.employee_name, salary.monthly_salary
-from employees right join
+FROM employees right join
 employee_salary ON employee_salary.employee_id=employees.id
 right join
 salary ON employee_salary.salary_id=salary.id
-where employee_name is null;
+WHERE employee_name is null;
 
 --4. Вывести все зарплатные позиции  меньше 2000 но работник по ним не назначен.
 -- (ЗП есть, но не понятно кто её получает.)
 
 SELECT employees.employee_name, salary.monthly_salary
-from employees right join
+FROM employees right join
 employee_salary ON employee_salary.employee_id=employees.id
 right join
 salary ON employee_salary.salary_id=salary.id
-where employees.employee_name is null and monthly_salary<2000;
+WHERE employees.employee_name is null and monthly_salary<2000;
 
 --5.Найти всех работников кому не начислена ЗП.
 
 SELECT employees.employee_name, salary.monthly_salary
-from employees left join
+FROM employees left join
 employee_salary ON employee_salary.employee_id=employees.id
 left join
 salary ON employee_salary.salary_id=salary.id
-where monthly_salary is null;
+WHERE monthly_salary is null;
 
 --6. Вывести всех работников с названиями их должности.
 
@@ -262,7 +262,7 @@ INNER join roles_employee ON roles_employee.employee_id=employees.id
 INNER join roles ON roles_employee.role_id=roles.id
 INNER join employee_salary ON employees.id=employee_salary.employee_id
 INNER join salary ON employee_salary.salary_id=salary.id
-order by salary.monthly_salary;
+ORDER BY salary.monthly_salary;
 
 --30. Вывести имена, должности и ЗП всех специалистов по возрастанию
 --у специалистов у которых ЗП от 1700 до 2300
@@ -273,8 +273,8 @@ INNER join roles_employee ON roles_employee.employee_id=employees.id
 INNER join roles ON roles_employee.role_id=roles.id
 INNER join employee_salary ON employees.id=employee_salary.employee_id
 INNER join salary ON employee_salary.salary_id=salary.id
-WHERE monthly_salary>1700 and monthly_salary<2300
-order by salary.monthly_salary;
+WHERE monthly_salary>1700 AND monthly_salary<2300
+ORDER BY salary.monthly_salary;
 
 --31. Вывести имена, должности и ЗП всех специалистов по возрастанию у специалистов 
 --у которых ЗП меньше 2300
@@ -286,7 +286,7 @@ INNER join roles ON roles_employee.role_id=roles.id
 INNER join employee_salary ON employees.id=employee_salary.employee_id
 INNER join salary ON employee_salary.salary_id=salary.id
 WHERE monthly_salary<2300
-order by salary.monthly_salary;
+ORDER BY salary.monthly_salary;
 
 --32. Вывести имена, должности и ЗП всех специалистов по возрастанию 
 --у специалистов у которых ЗП равна 1100, 1500, 2000
@@ -297,5 +297,5 @@ INNER join roles_employee ON roles_employee.employee_id=employees.id
 INNER join roles ON roles_employee.role_id=roles.id
 INNER join employee_salary ON employees.id=employee_salary.employee_id
 INNER join salary ON employee_salary.salary_id=salary.id
-WHERE monthly_salary=1100 or monthly_salary=1500 or monthly_salary=2000
-order by salary.monthly_salary;
+WHERE monthly_salary=1100 OR monthly_salary=1500 OR monthly_salary=2000
+ORDER BY salary.monthly_salary;
