@@ -1,49 +1,45 @@
-create table employees(
+CREATE TABLE employees(
 	id serial primary key,
-	employee_name varchar(50) not null
+	employee_name varchar(50) NOT NULL
 );
 
-create table salary(
+CREATE TABLE salary(
 	id serial primary key,
-	monthly_salary int not null
+	monthly_salary int NOT NULL
 );
 
-create table employee_salary(
+CREATE TABLE employee_salary(
 	id serial primary key,
-	employee_id Int unique not null, 
-	salary_id Int not null
+	employee_id Int unique NOT NULL, 
+	salary_id Int NOT NULL
 );
 
-drop table employee_salary cascade
-
-drop table roles_employee cascade
-
-create table roles(
+CREATE TABLE roles(
 	id serial primary key,
-	role_name int unique not null
+	role_name int unique NOT NULL
 );
 		
-alter table roles
-alter column role_name type varchar(30);
+ALTER TABLE roles
+ALTER column role_name type varchar(30);
 
-create table roles_employee(
+CREATE TABLE roles_employee(
  id serial primary key,
- employee_id int unique not null,  
- role_id int not null,
+ employee_id int unique NOT NULL,  
+ role_id int NOT NULL,
  foreign key(employee_id)
 		references employees(id),
 	foreign key(role_id)
 		references roles(id)
 );
 
-select * from employees;
-select * from salary;
-select * from employee_salary;
-select * from roles;
-select * from roles_employee;
+SELECT * FROM employees;
+SELECT * FROM salary;
+SELECT * FROM employee_salary;
+SELECT * FROM roles;
+SELECT * FROM roles_employee;
 
-insert into employees(employee_name)
-values('Мельникова_Ксения '),
+INSERT INTO employees(employee_name)
+VALUES('Мельникова_Ксения '),
 		('Иванова София'),
 		('Буракшаева Юлия'), 
 		('Фурсова Елизавета'),
@@ -114,7 +110,7 @@ values('Мельникова_Ксения '),
 		('Морозов Кирилл'),
 		('Попов Леонид');
 		
-insert into salary(monthly_salary)
+INSERT INTO salary(monthly_salary)
 values(1000),
 (1100),
 (1200),
@@ -131,8 +127,8 @@ values(1000),
 (2300),
 (2400);
 
-insert into employee_salary(employee_id,salary_id)
-values(3,7),
+INSERT INTO employee_salary(employee_id,salary_id)
+VALUES(3,7),
 (1,4),
 (5,9),
 (40,13),
@@ -175,8 +171,8 @@ values(3,7),
 (49,5);
 
 
-insert into roles(role_name)
-values('Junior Python developer'),
+INSERT INTO roles(role_name)
+VALUES('Junior Python developer'),
 ('Middle Python developer'),
 ('Senior Python developer'),
 ('Junior Java developer'),
@@ -197,8 +193,8 @@ values('Junior Python developer'),
 ('Middle Automation QA engineer'),
 ('Senior Automation QA engineer');
 
-insert into roles_employee(employee_id,role_id)
-values(7,2),
+INSERT INTO roles_employee(employee_id,role_id)
+VALUES(7,2),
 (20,4),
 (3,9),
 (5,13),
@@ -240,24 +236,5 @@ values(7,2),
 (55,10);
 
 
-CREATE TABLE public.students(
-	id serial4 NOT NULL,
-	"name" varchar(50) NOT NULL,
-	email varchar(50) NOT NULL,
-	"password" varchar(50) NOT NULL,
-	created_on timestamp NOT NULL,
-	CONSTRAINT students_email_key UNIQUE (email),
-	CONSTRAINT students_pkey PRIMARY KEY (id)
-);
- drop table employee_salary;
 
- create table employee_salary(
-	id serial primary key,
-	employee_id Int unique not null, 
-	salary_id Int not null,
-	foreign key(employee_id)
-		references employees(id),
-	foreign key(salary_id)
-		references salary(id)
-);
 
